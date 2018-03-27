@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN"
+        "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+
+<urlrewrite>
+
+    <!-- 官网首页 -->
+    <rule>
+        <from>^/$</from>
+		<!-- to: 真实的URL -->
+		<to type="forward">/blog/open/post/122</to>
+    </rule>
+
+    
+
+</urlrewrite>
