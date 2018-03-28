@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.enterprise.dao.EnterpriseInfoDao">
+
+	<select id="get" resultType="com.bootdo.enterprise.domain.EnterpriseInfoDO">
+		select `id`,`created`,`updated`,`status`,`enterprise_name`,`enterprise_code`,`web_url`,`url`,`name`,`mobile`,`cert_no`,`front_url`,`back_url`,`email`,`remark` from enterprise_info where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.bootdo.enterprise.domain.EnterpriseInfoDO">
+		select `id`,`created`,`updated`,`status`,`enterprise_name`,`enterprise_code`,`web_url`,`url`,`name`,`mobile`,`cert_no`,`front_url`,`back_url`,`email`,`remark` from enterprise_info
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="created != null and created != ''"> and created = #{created} </if>
+		  		  <if test="updated != null and updated != ''"> and updated = #{updated} </if>
+		  		  <if test="status != null and status != ''"> and status = #{status} </if>
+		  		  <if test="enterpriseName != null and enterpriseName != ''"> and enterprise_name = #{enterpriseName} </if>
+		  		  <if test="enterpriseCode != null and enterpriseCode != ''"> and enterprise_code = #{enterpriseCode} </if>
+		  		  <if test="webUrl != null and webUrl != ''"> and web_url = #{webUrl} </if>
+		  		  <if test="url != null and url != ''"> and url = #{url} </if>
+		  		  <if test="name != null and name != ''"> and name = #{name} </if>
+		  		  <if test="mobile != null and mobile != ''"> and mobile = #{mobile} </if>
+		  		  <if test="certNo != null and certNo != ''"> and cert_no = #{certNo} </if>
+		  		  <if test="frontUrl != null and frontUrl != ''"> and front_url = #{frontUrl} </if>
+		  		  <if test="backUrl != null and backUrl != ''"> and back_url = #{backUrl} </if>
+		  		  <if test="email != null and email != ''"> and email = #{email} </if>
+		  		  <if test="remark != null and remark != ''"> and remark = #{remark} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from enterprise_info
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="created != null and created != ''"> and created = #{created} </if>
+		  		  <if test="updated != null and updated != ''"> and updated = #{updated} </if>
+		  		  <if test="status != null and status != ''"> and status = #{status} </if>
+		  		  <if test="enterpriseName != null and enterpriseName != ''"> and enterprise_name = #{enterpriseName} </if>
+		  		  <if test="enterpriseCode != null and enterpriseCode != ''"> and enterprise_code = #{enterpriseCode} </if>
+		  		  <if test="webUrl != null and webUrl != ''"> and web_url = #{webUrl} </if>
+		  		  <if test="url != null and url != ''"> and url = #{url} </if>
+		  		  <if test="name != null and name != ''"> and name = #{name} </if>
+		  		  <if test="mobile != null and mobile != ''"> and mobile = #{mobile} </if>
+		  		  <if test="certNo != null and certNo != ''"> and cert_no = #{certNo} </if>
+		  		  <if test="frontUrl != null and frontUrl != ''"> and front_url = #{frontUrl} </if>
+		  		  <if test="backUrl != null and backUrl != ''"> and back_url = #{backUrl} </if>
+		  		  <if test="email != null and email != ''"> and email = #{email} </if>
+		  		  <if test="remark != null and remark != ''"> and remark = #{remark} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.enterprise.domain.EnterpriseInfoDO" useGeneratedKeys="true" keyProperty="id">
+		insert into enterprise_info
+		(
+			`created`, 
+			`updated`, 
+			`status`, 
+			`enterprise_name`, 
+			`enterprise_code`, 
+			`web_url`, 
+			`url`, 
+			`name`, 
+			`mobile`, 
+			`cert_no`, 
+			`front_url`, 
+			`back_url`, 
+			`email`, 
+			`remark`
+		)
+		values
+		(
+			#{created}, 
+			#{updated}, 
+			#{status}, 
+			#{enterpriseName}, 
+			#{enterpriseCode}, 
+			#{webUrl}, 
+			#{url}, 
+			#{name}, 
+			#{mobile}, 
+			#{certNo}, 
+			#{frontUrl}, 
+			#{backUrl}, 
+			#{email}, 
+			#{remark}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.enterprise.domain.EnterpriseInfoDO">
+		update enterprise_info 
+		<set>
+			<if test="created != null">`created` = #{created}, </if>
+			<if test="updated != null">`updated` = #{updated}, </if>
+			<if test="status != null">`status` = #{status}, </if>
+			<if test="enterpriseName != null">`enterprise_name` = #{enterpriseName}, </if>
+			<if test="enterpriseCode != null">`enterprise_code` = #{enterpriseCode}, </if>
+			<if test="webUrl != null">`web_url` = #{webUrl}, </if>
+			<if test="url != null">`url` = #{url}, </if>
+			<if test="name != null">`name` = #{name}, </if>
+			<if test="mobile != null">`mobile` = #{mobile}, </if>
+			<if test="certNo != null">`cert_no` = #{certNo}, </if>
+			<if test="frontUrl != null">`front_url` = #{frontUrl}, </if>
+			<if test="backUrl != null">`back_url` = #{backUrl}, </if>
+			<if test="email != null">`email` = #{email}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from enterprise_info where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from enterprise_info where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

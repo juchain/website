@@ -54,7 +54,7 @@ public class BlogController {
 		params2.putAll(params);
 
 		params2.put("isTop", 1);
-//		params2.put("type", Constant.TYPE_NEWS);
+       //params2.put("type", Constant.TYPE_NEWS);
 
 		Query query2 = new Query(params2);
 		List<ContentDO> topList = bContentService.listTop(query2);
