@@ -16,7 +16,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface ApplicationDao {
 
-	ApplicationDO get(Long appId);
+	ApplicationDO get(Long id);
 	
 	List<ApplicationDO> list(Map<String, Object> map);
 	
@@ -26,7 +26,7 @@ public interface ApplicationDao {
 	
 	int update(ApplicationDO application);
 	
-	int remove(Long app_id);
+	int remove(Long id);
 	
-	int batchRemove(Long[] appIds);
+	int batchRemove(Long[] ids);
 }

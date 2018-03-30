@@ -1,5 +1,6 @@
 package com.bootdo.application.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -36,14 +37,14 @@ public class ApplicationController {
 	private ApplicationService applicationService;
 	
 	@GetMapping()
-	//@RequiresPermissions("application:application:application")
+	@RequiresPermissions("application:application:application")
 	String Application(){
-	    return "application/application/application";
+	    return "application/application";
 	}
 	
 	@ResponseBody
 	@GetMapping("/list")
-	//@RequiresPermissions("application:application:application")
+	@RequiresPermissions("application:application:application")
 	public PageUtils list(@RequestParam Map<String, Object> params){
 		//查询列表数据
         Query query = new Query(params);
@@ -54,17 +55,20 @@ public class ApplicationController {
 	}
 	
 	@GetMapping("/add")
-	//@RequiresPermissions("application:application:add")
+	@RequiresPermissions("application:application:add")
 	String add(){
-	    return "application/application/add";
+	    return "application/add";
 	}
 
-	@GetMapping("/edit/{appId}")
-	//@RequiresPermissions("application:application:edit")
-	String edit(@PathVariable("appId") Long appId,Model model){
-		ApplicationDO application = applicationService.get(appId);
-		model.addAttribute("application", application);
-	    return "application/application/edit";
+	@GetMapping("/edit/{id}")
+	@RequiresPermissions("application:application:edit")
+	String edit(@PathVariable("id") Long id,Model model){
+		ApplicationDO application = applicationService.get(id);
+		SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD hh:mm:ss");
+		String pbd = sdf.format(application.getCreated());
+		application.setCreatedString(pbd);
+		model.addAttribute("applications", application);
+	    return "application/edit";
 	}
 	
 	/**
@@ -72,8 +76,8 @@ public class ApplicationController {
 	 */
 	@ResponseBody
 	@PostMapping("/save")
-	//@RequiresPermissions("application:application:add")
-	public R save(@RequestBody ApplicationDO application){
+	@RequiresPermissions("application:application:add")
+	public R save(ApplicationDO application){
 		return  applicationService.createApplication(application);
 	}
 	/**
@@ -81,8 +85,8 @@ public class ApplicationController {
 	 */
 	@ResponseBody
 	@RequestMapping("/update")
-	//@RequiresPermissions("application:application:edit")
-	public R update(@RequestBody ApplicationDO application){
+	@RequiresPermissions("application:application:edit")
+	public R update(ApplicationDO application){
 		applicationService.update(application);
 		return R.ok();
 	}
@@ -92,9 +96,9 @@ public class ApplicationController {
 	 */
 	@PostMapping( "/remove")
 	@ResponseBody
-	//@RequiresPermissions("application:application:remove")
-	public R remove( Long appId){
-		if(applicationService.remove(appId)>0){
+	@RequiresPermissions("application:application:remove")
+	public R remove( Long id){
+		if(applicationService.remove(id)>0){
 		return R.ok();
 		}
 		return R.error();
@@ -105,9 +109,9 @@ public class ApplicationController {
 	 */
 	@PostMapping( "/batchRemove")
 	@ResponseBody
-	//@RequiresPermissions("application:application:batchRemove")
-	public R remove(@RequestParam("ids[]") Long[] appIds){
-		applicationService.batchRemove(appIds);
+	@RequiresPermissions("application:application:batchRemove")
+	public R remove(@RequestParam("ids[]") Long[] ids){
+		applicationService.batchRemove(ids);
 		return R.ok();
 	}
 

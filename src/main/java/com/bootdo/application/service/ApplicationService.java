@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public interface ApplicationService {
 	
-	ApplicationDO get(Long appId);
+	ApplicationDO get(Long id);
 	
 	List<ApplicationDO> list(Map<String, Object> map);
 	
@@ -25,9 +25,9 @@ public interface ApplicationService {
 	
 	int update(ApplicationDO application);
 	
-	int remove(Long appId);
+	int remove(Long id);
 	
-	int batchRemove(Long[] appIds);
+	int batchRemove(Long[] ids);
 
     R createApplication(ApplicationDO application);
 }

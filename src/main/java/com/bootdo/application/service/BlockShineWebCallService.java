@@ -63,7 +63,7 @@ public class BlockShineWebCallService {
 
             AddressDO addressDo = new AddressDO();
             addressDo.setAddressFrom((String)jo.get("from"));
-            addressDo.setAddressTo((String)jo.get("from"));
+            addressDo.setAddressTo((String)jo.get("to"));
             addressDo.setCreated(new Date());
             addressDo.setAppId(applicationDO.getAppId());
             addressDo.setAppKey(applicationDO.getAppKey());

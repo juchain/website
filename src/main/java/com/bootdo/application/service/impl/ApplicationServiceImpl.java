@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import com.bootdo.application.dao.ApplicationDao;
 import com.bootdo.application.domain.ApplicationDO;
@@ -23,8 +24,8 @@ public class ApplicationServiceImpl implements ApplicationService {
 	private BlockShineWebCallService blockShineWebCallService;
 
 	@Override
-	public ApplicationDO get(Long appId) {
-		return applicationDao.get(appId);
+	public ApplicationDO get(Long id) {
+		return applicationDao.get(id);
 	}
 
 	@Override
@@ -48,13 +49,13 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 
 	@Override
-	public int remove(Long appId) {
-		return applicationDao.remove(appId);
+	public int remove(Long id) {
+		return applicationDao.remove(id);
 	}
 
 	@Override
-	public int batchRemove(Long[] appIds) {
-		return applicationDao.batchRemove(appIds);
+	public int batchRemove(Long[] ids) {
+		return applicationDao.batchRemove(ids);
 	}
 
 
@@ -65,6 +66,8 @@ public class ApplicationServiceImpl implements ApplicationService {
 		application.setCreated(new Date());
 		application.setStatus(1);
 		application.setUpdated(new Date());
+
+		application.setAppId(UUID.randomUUID().toString().replace("_",""));
 
 		int save = applicationDao.save(application);
 		R r = R.ok();

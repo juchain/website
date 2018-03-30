@@ -23,7 +23,7 @@ public class AddressDO implements Serializable {
 	//状态 0:禁用，1:正常
 	private Integer status;
 	//应用id
-	private Long appId;
+	private String appId;
 	//链类型0-共有链 1-私有链
 	private Integer type;
 	//转出地址
@@ -81,27 +81,26 @@ public class AddressDO implements Serializable {
 	public Integer getStatus() {
 		return status;
 	}
-	/**
-	 * 设置：应用id
-	 */
-	public void setAppId(Long appId) {
-		this.appId = appId;
-	}
-	/**
-	 * 获取：应用id
-	 */
-	public Long getAppId() {
-		return appId;
-	}
+
 	/**
 	 * 设置：链类型0-共有链 1-私有链
 	 */
 	public void setType(Integer type) {
 		this.type = type;
 	}
+
+	public String getAppId() {
+		return appId;
+	}
+
+	public void setAppId(String appId) {
+		this.appId = appId;
+	}
+
 	/**
 	 * 获取：链类型0-共有链 1-私有链
 	 */
+
 	public Integer getType() {
 		return type;
 	}
