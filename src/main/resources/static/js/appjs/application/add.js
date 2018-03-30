@@ -1,4 +1,5 @@
 $().ready(function() {
+    loadType();
 	validateRule();
 });
 
@@ -46,4 +47,32 @@ function validateRule() {
 			}
 		}
 	})
+}
+
+
+function loadType(){
+    var html = "";
+    $.ajax({
+        url : '/common/sysDict/list/application_type',
+        success : function(data) {
+            //加载数据
+            for (var i = 0; i < data.length; i++) {
+                html += '<option value="' + data[i].value + '">' + data[i].name + '</option>'
+            }
+            $(".chosen-select").append(html);
+            $(".chosen-select").chosen({
+                maxHeight : 200
+            });
+            //点击事件
+            $('.chosen-select').on('change', function(e, params) {
+                console.log(params.selected);
+                var opt = {
+                    query : {
+                        type : params.selected,
+                    }
+                }
+                $('#exampleTable').bootstrapTable('refresh', opt);
+            });
+        }
+    });
 }

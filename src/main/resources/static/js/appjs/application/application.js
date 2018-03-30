@@ -55,25 +55,29 @@ function load() {
 
                     {
                         field : 'appId',
-                        title : '用户id'
+                        title : 'id'
                     },
                     {
                         field : 'created',
                         title : '创建时间'
                     },
                     {
+                        visible : false,
                         field : 'updated',
                         title : '修改时间'
                     },
                     {
+                        visible : false,
                         field : 'status',
                         title : '状态 0:禁用，1:正常'
                     },
                     {
+                        visible : false,
                         field : 'userId',
                         title : '用户id'
                     },
                     {
+
                         field : 'appName',
                         title : '应用名称'
                     },
@@ -94,6 +98,7 @@ function load() {
                         title : '应用秘钥'
                     },
                     {
+                        visible : false,
                         field : 'envType',
                         title : '1-dev 2-test 3-pre 4-pro'
                     },
@@ -102,16 +107,19 @@ function load() {
                         title : '应用描述'
                     },
                     {
+                        visible : false,
                         field : 'appStore',
                         title : '0-无 1-有  appstore 有无应用'
                     },
                     {
+                        visible : false,
                         field : 'android',
                         title : '0 -无 1-有'
                     },
                     {
+                        visible : false,
                         field : 'webSite',
-                        title : ''
+                        title : '网站'
                     },
                     {
                         title : '操作',

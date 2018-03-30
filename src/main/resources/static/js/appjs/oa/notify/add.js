@@ -48,6 +48,7 @@ function validateRule() {
 		}
 	})
 }
+
 function loadType(){
 	var html = "";
 	$.ajax({
