@@ -17,8 +17,8 @@ public class Query extends LinkedHashMap<String, Object> {
 	public Query(Map<String, Object> params) {
 		this.putAll(params);
 		// 分页参数
-		this.offset = Optional.ofNullable(params.get("offset")).isPresent()?Integer.parseInt(params.get("offset").toString()):0;
-		this.limit = Optional.ofNullable(params.get("limit")).isPresent()?Integer.parseInt(params.get("limit").toString()):10;
+		this.offset = params.get("offset") == null?0:Integer.parseInt(params.get("offset").toString());
+		this.limit = params.get("limit") == null?10:Integer.parseInt(params.get("limit").toString());
 		this.put("offset", offset);
 		this.put("page", offset / limit + 1);
 		this.put("limit", limit);

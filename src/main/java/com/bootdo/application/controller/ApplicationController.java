@@ -76,7 +76,7 @@ public class ApplicationController {
 	 */
 	@ResponseBody
 	@PostMapping("/save")
-	@RequiresPermissions("application:application:add")
+	//@RequiresPermissions("application:application:add")
 	public R save(ApplicationDO application){
 		return  applicationService.createApplication(application);
 	}

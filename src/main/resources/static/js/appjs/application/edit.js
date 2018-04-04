@@ -1,5 +1,8 @@
 $().ready(function() {
+    loadType();
+    loadType2();
 	validateRule();
+
 });
 
 $.validator.setDefaults({
@@ -46,4 +49,68 @@ function validateRule() {
 			}
 		}
 	})
+}
+
+
+
+
+function loadType(){
+    var html = "";
+    $.ajax({
+        url : '/common/sysDict/list/application_type',
+        success : function(data) {
+            //加载数据
+            for (var i = 0; i < data.length; i++) {
+                //html += '<option value="' + data[i].value + '"'+'th:selected='+${data[i].name=="1"}>'+ data[i].name + '</option>'
+                html += '<option value="' + data[i].value + '">' + data[i].name + '</option>'
+               // html += "<option value=\"" + data[i].value + "\""+"th:selected=${applications.appType==\""+data[i].value +"\"}>" + data[i].name + "</option>"
+
+            }
+            $("#appType").append(html);
+            $("#appType").chosen({
+                maxHeight : 200
+            });
+            //点击事件
+            $('#appType').on('change', function(e, params) {
+                console.log(params.selected);
+                var opt = {
+                    query : {
+                        type : params.selected,
+                    }
+                }
+                $('#exampleTable').bootstrapTable('refresh', opt);
+            });
+        }
+    });
+}
+
+
+
+function loadType2(){
+    var html = "";
+    $.ajax({
+        url : '/common/sysDict/list/env_type',
+        success : function(data) {
+            //加载数据
+            for (var i = 0; i < data.length; i++) {
+                html += '<option value="' + data[i].value + '">' + data[i].name + '</option>'
+
+              //  html += "<option value=\"" + data[i].value + "\""+"th:selected="+"${applications.envType==\""+data[i].value +"\"}>" + data[i].name + "</option>"
+
+            $("#envType").append(html);
+            $("#envType").chosen({
+                maxHeight : 200
+            });
+            //点击事件
+            $('#envType').on('change', function(e, params) {
+                console.log(params.selected);
+                var opt = {
+                    query : {
+                        type : params.selected,
+                    }
+                }
+                $('#exampleTable').bootstrapTable('refresh', opt);
+            });
+        }
+    }});
 }

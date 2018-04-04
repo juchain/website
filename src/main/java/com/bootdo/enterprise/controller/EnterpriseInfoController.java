@@ -3,6 +3,7 @@ package com.bootdo.enterprise.controller;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.collections.MapUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -28,7 +29,7 @@ import com.bootdo.common.utils.R;
  * @email 1992lcg@163.com
  * @date 2018-03-27 16:44:41
  */
- 
+
 @Controller
 @RequestMapping("/enterprise/enterpriseInfo")
 public class EnterpriseInfoController {
@@ -40,19 +41,37 @@ public class EnterpriseInfoController {
 	String EnterpriseInfo(){
 	    return "enterprise/enterpriseInfo/enterpriseInfo";
 	}
-	
+
 	@ResponseBody
 	@GetMapping("/list")
 	@RequiresPermissions("enterprise:enterpriseInfo:enterpriseInfo")
 	public PageUtils list(@RequestParam Map<String, Object> params){
 		//查询列表数据
-        Query query = new Query(params);
+		Query query = null;
+		if(MapUtils.isNotEmpty(params)){
+			 query = new Query(params);
+		}
+
 		List<EnterpriseInfoDO> enterpriseInfoList = enterpriseInfoService.list(query);
 		int total = enterpriseInfoService.count(query);
 		PageUtils pageUtils = new PageUtils(enterpriseInfoList, total);
 		return pageUtils;
 	}
-	
+
+
+
+
+
+	@ResponseBody
+	@GetMapping("/listAll")
+	public List<EnterpriseInfoDO>listAll(){
+		List<EnterpriseInfoDO> enterpriseInfoList = enterpriseInfoService.list(null);
+		return enterpriseInfoList;
+	}
+
+
+
+
 	@GetMapping("/add")
 	@RequiresPermissions("enterprise:enterpriseInfo:add")
 	String add(){

@@ -66,8 +66,11 @@ public class ApplicationServiceImpl implements ApplicationService {
 		application.setCreated(new Date());
 		application.setStatus(1);
 		application.setUpdated(new Date());
+		application.setAppKey(UUID.randomUUID().toString().replace("-",""));
+		application.setAppSecret(UUID.randomUUID().toString().replace("-",""));
 
-		application.setAppId(UUID.randomUUID().toString().replace("_",""));
+		application.setAppId(UUID.randomUUID().toString().replace("-",""));
+
 
 		int save = applicationDao.save(application);
 		R r = R.ok();

@@ -86,6 +86,7 @@ function load() {
                         title : '应用类型'
                     },
                     {
+                        visible : false,
                         field : 'appStatus',
                         title : '应用状态'
                     },
@@ -100,7 +101,7 @@ function load() {
                     {
                         visible : false,
                         field : 'envType',
-                        title : '1-dev 2-test 3-pre 4-pro'
+                        title : '开发环境'
                     },
                     {
                         field : 'remark',
