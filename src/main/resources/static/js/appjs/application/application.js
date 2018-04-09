@@ -83,7 +83,20 @@ function load() {
                     },
                     {
                         field : 'appType',
-                        title : '应用类型'
+                        title : '应用类型',
+                        formatter : function(value, row, index) {
+                            if (value == '1') {
+                                return '<span class="label label-danger">开发环境</span>';
+                            } else if (value == '2') {
+                                return '<span class="label label-primary">测试环境</span>';
+                            } else if (value == '3') {
+                                return '<span class="label label-primary">预生产环境</span>';
+                            } else if (value == '4') {
+                                return '<span class="label label-primary">生产环境</span>';
+                            }else{
+                                return '<span class="label label-primary">未知环境</span>';
+                            }
+                        }
                     },
                     {
                         visible : false,
@@ -101,7 +114,16 @@ function load() {
                     {
                         visible : false,
                         field : 'envType',
-                        title : '开发环境'
+                        title : '开发环境',
+                        // formatter : function(value, row, index) {
+                        //     if (value == '0') {
+                        //         return '<span class="label label-danger">草稿</span>';
+                        //     } else if (value == '1') {
+                        //         return '<span class="label label-primary">发布</span>';
+                        //     }else{
+                        //         return '<span class="label label-primary">暂存</span>';
+                        //     }
+                        // }
                     },
                     {
                         field : 'remark',

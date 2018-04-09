@@ -90,16 +90,20 @@ function loadEnvType() {
 		success : function(data) {
 			//加载数据
 			for (var i = 0; i < data.length; i++) {
-				html += '<option value="' + data[i].value
-						+ '"  th:selected="true" >' + data[i].name
-						+ '</option>'
+                html += '<option value="' + data[i].value
+                    + '">' + data[i].name
+                    + '</option>'
 
-				//  html += "<option value=\"" + data[i].value + "\""+"th:selected="+"${applications.envType==\""+data[i].value +"\"}>" + data[i].name + "</option>"
+            }
 
 				$("#envType").append(html);
 				$("#envType").chosen({
 					maxHeight : 200
 				});
+
+
+            $("#envType").val($("#henvType").text());
+            $("#envType").trigger("chosen:updated");
 				//点击事件
 				$('#envType').on('change', function(e, params) {
 					console.log(params.selected);
@@ -111,6 +115,6 @@ function loadEnvType() {
 					$('#exampleTable').bootstrapTable('refresh', opt);
 				});
 			}
-		}
+
 	});
 }

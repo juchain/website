@@ -64,7 +64,7 @@ public class ApplicationController {
 	@RequiresPermissions("application:application:edit")
 	String edit(@PathVariable("id") Long id,Model model){
 		ApplicationDO application = applicationService.get(id);
-		SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD hh:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String pbd = sdf.format(application.getCreated());
 		application.setCreatedString(pbd);
 		model.addAttribute("applications", application);

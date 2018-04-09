@@ -40,7 +40,7 @@
 
 							<!--<input id="appTypeHidden" name="appType" th:value="${applications.appType}" class="form-control" type="hidden">-->
 							<div class="form-group">
-								<label class="col-sm-3 control-label">应用类型：<span id="happtype" th:text="${applications.appType}" ></span>   </label>
+								<label class="col-sm-3 control-label">应用类型：<span id="happtype" th:text="${applications.appType}" style="display: none" ></span>   </label>
 								<div class="col-sm-8">
 									<!--th:text="${appType.name}"-->
 									<select data-placeholder="--选择类别--" name="appType" id="appType" class="form-control chosen-select" tabindex="2" required>
@@ -68,7 +68,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-sm-3 control-label">开发环境</label>
+								<label class="col-sm-3 control-label">开发环境<span id="henvType" th:text="${applications.envType}" style="display: none" ></span> </label>
 								<div class="col-sm-8">
 									<!--th:text="${envType.name}"-->
 									<select data-placeholder="--选择类别--" name="envType" id="envType" class="form-control chosen-select" tabindex="2" required>
