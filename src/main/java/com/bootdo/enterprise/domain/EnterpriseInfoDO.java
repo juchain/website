@@ -19,6 +19,7 @@ public class EnterpriseInfoDO implements Serializable {
 	private Long id;
 	//创建时间
 	private Date created;
+	private String createdString;
 	//修改时间
 	private Date updated;
 	//状态 0:禁用，1:正常
@@ -225,5 +226,13 @@ public class EnterpriseInfoDO implements Serializable {
 	 */
 	public String getRemark() {
 		return remark;
+	}
+
+	public String getCreatedString() {
+		return createdString;
+	}
+
+	public void setCreatedString(String createdString) {
+		this.createdString = createdString;
 	}
 }
