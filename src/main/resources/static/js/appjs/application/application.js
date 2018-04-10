@@ -2,6 +2,8 @@
 var prefix = "/application"
 $(function() {
     load();
+    loadAppType();
+    loadEnvType();
 });
 
 function load() {
@@ -32,7 +34,11 @@ function load() {
                     return {
                         //说明：传入后台的参数包括offset开始索引，limit步长，sort排序列，order：desc或者,以及所有列的键值对
                         limit: params.limit,
-                        offset:params.offset
+                        offset:params.offset,
+
+                        appType:$('#appType').val(),
+                        envType:$('#envType').val(),
+                        appName:$('#appName').val(),
                         // name:$('#searchName').val(),
                         // username:$('#searchName').val()
                     };
@@ -54,6 +60,7 @@ function load() {
                     },
 
                     {
+                        visible : false,
                         field : 'appId',
                         title : 'id'
                     },
@@ -120,18 +127,21 @@ function load() {
                         title : '应用秘钥'
                     },
                     {
-                        visible : false,
                         field : 'envType',
                         title : '开发环境',
-                        // formatter : function(value, row, index) {
-                        //     if (value == '0') {
-                        //         return '<span class="label label-danger">草稿</span>';
-                        //     } else if (value == '1') {
-                        //         return '<span class="label label-primary">发布</span>';
-                        //     }else{
-                        //         return '<span class="label label-primary">暂存</span>';
-                        //     }
-                        // }
+                        formatter : function(value, row, index) {//1-dev 2-test 3-pre 4-pro
+                            if (value == '1') {
+                                return '<span class="label label-danger">开发环境</span>';
+                            } else if (value == '2') {
+                                return '<span class="label label-primary">测试环境</span>';
+                            }else if (value == '3'){
+                                return '<span class="label label-primary">预生产环境</span>';
+                            }else if (value == '4'){
+                                return '<span class="label label-primary">生产环境</span>';
+                            }else{
+                                return '<span class="label label-primary">其他</span>';
+                            }
+                        }
                     },
                     {
                         field : 'remark',
@@ -250,5 +260,64 @@ function batchRemove() {
         });
     }, function() {
 
+    });
+}
+
+
+
+
+function loadAppType(){
+    var html = "";
+    $.ajax({
+        url : '/common/sysDict/list/application_type',
+        success : function(data) {
+            //加载数据
+            for (var i = 0; i < data.length; i++) {
+                html += '<option value="' + data[i].value + '">' + data[i].name + '</option>'
+            }
+            $("#appType").append(html);
+            $("#appType").chosen({
+                maxHeight : 200
+            });
+            //点击事件
+            $('#appType').on('change', function(e, params) {
+                console.log(params.selected);
+                var opt = {
+                    query : {
+                        type : params.selected,
+                    }
+                }
+                $('#exampleTable').bootstrapTable('refresh', opt);
+            });
+        }
+    });
+}
+
+
+
+function loadEnvType(){
+    var html = "";
+    $.ajax({
+        url : '/common/sysDict/list/env_type',
+        success : function(data) {
+            //加载数据
+            for (var i = 0; i < data.length; i++) {
+                html += '<option value="' + data[i].value + '">' + data[i].name + '</option>'
+            }
+            $("#envType").append(html);
+            $("#envType").chosen({
+                maxHeight : 200
+            });
+            //点击事件
+            $('#envType').on('change', function(e, params) {
+                console.log(params.selected);
+                var opt = {
+                    query : {
+                        type : params.selected,
+                    }
+                }
+                $('#exampleTable').bootstrapTable('refresh', opt);
+            });
+        }
     });
 }
