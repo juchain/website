@@ -51,10 +51,7 @@ function load() {
                         field : 'id',
                         title : ''
                     },
-                    {
-                        field : 'created',
-                        title : '创建时间'
-                    },
+
                     {
                         visible : false,
                         field : 'updated',
@@ -112,6 +109,9 @@ function load() {
                     {
                         field : 'remark',
                         title : '备注'
+                    },{
+                        field : 'created',
+                        title : '创建时间'
                     },
                     {
                         title : '操作',
