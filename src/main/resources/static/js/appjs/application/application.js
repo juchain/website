@@ -86,15 +86,23 @@ function load() {
                         title : '应用类型',
                         formatter : function(value, row, index) {
                             if (value == '1') {
-                                return '<span class="label label-danger">开发环境</span>';
+                                return '<span class="label label-danger">保险</span>';
                             } else if (value == '2') {
-                                return '<span class="label label-primary">测试环境</span>';
+                                return '<span class="label label-primary">游戏</span>';
                             } else if (value == '3') {
-                                return '<span class="label label-primary">预生产环境</span>';
+                                return '<span class="label label-primary">交易所</span>';
                             } else if (value == '4') {
-                                return '<span class="label label-primary">生产环境</span>';
+                                return '<span class="label label-primary">供应链</span>';
+                            }else if (value == '5') {
+                                return '<span class="label label-primary">征信</span>';
+                            }else if (value == '6') {
+                                return '<span class="label label-primary">积分</span>';
+                            }else if (value == '7') {
+                                return '<span class="label label-primary">社保</span>';
+                            }else if (value == '8') {
+                                return '<span class="label label-primary">慈善</span>';
                             }else{
-                                return '<span class="label label-primary">未知环境</span>';
+                                return '<span class="label label-primary">其他</span>';
                             }
                         }
                     },
