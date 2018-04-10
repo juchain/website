@@ -64,10 +64,7 @@ function load() {
                         field : 'appId',
                         title : 'id'
                     },
-                    {
-                        field : 'created',
-                        title : '创建时间'
-                    },
+
                     {
                         visible : false,
                         field : 'updated',
@@ -146,6 +143,10 @@ function load() {
                     {
                         field : 'remark',
                         title : '应用描述'
+                    },
+                    {
+                        field : 'created',
+                        title : '创建时间'
                     },
                     {
                         visible : false,
