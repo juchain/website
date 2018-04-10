@@ -32,8 +32,8 @@ function load() {
                     return {
                         //说明：传入后台的参数包括offset开始索引，limit步长，sort排序列，order：desc或者,以及所有列的键值对
                         limit: params.limit,
-                        offset:params.offset
-                        // name:$('#searchName').val(),
+                        offset:params.offset ,
+                        enterpriseName:$('#enterpriseName').val(),
                         // username:$('#searchName').val()
                     };
                 },
@@ -51,10 +51,7 @@ function load() {
                         field : 'id',
                         title : ''
                     },
-                    {
-                        field : 'created',
-                        title : '创建时间'
-                    },
+
                     {
                         visible : false,
                         field : 'updated',
@@ -112,6 +109,9 @@ function load() {
                     {
                         field : 'remark',
                         title : '备注'
+                    },{
+                        field : 'created',
+                        title : '创建时间'
                     },
                     {
                         title : '操作',

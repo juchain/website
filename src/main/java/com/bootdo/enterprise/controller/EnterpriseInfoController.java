@@ -1,5 +1,6 @@
 package com.bootdo.enterprise.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -82,6 +83,9 @@ public class EnterpriseInfoController {
 	@RequiresPermissions("enterprise:enterpriseInfo:edit")
 	String edit(@PathVariable("id") Long id,Model model){
 		EnterpriseInfoDO enterpriseInfo = enterpriseInfoService.get(id);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String pbd = sdf.format(enterpriseInfo.getCreated());
+		enterpriseInfo.setCreatedString(pbd);
 		model.addAttribute("enterpriseInfo", enterpriseInfo);
 	    return "enterprise/enterpriseInfo/edit";
 	}

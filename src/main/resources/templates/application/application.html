@@ -8,7 +8,43 @@
 			<div class="ibox">
 				<div class="ibox-body">
 					<div class="fixed-table-toolbar">
-						<div class="columns pull-left">
+
+						<div class="form-group">
+							<label class="col-sm-1 control-label">应用名称：</label>
+							<div class="col-sm-2">
+								<input id="appName" name="appName"  class="form-control" type="text">
+							</div>
+							<label class="col-sm-1 control-label">应用类型：</label>
+							<div class="col-sm-2">
+								<select data-placeholder="--选择类别--" name="appType" id="appType" class="form-control chosen-select" tabindex="2" required>
+									<option value="">--选择类别--</option>
+								</select>
+							</div>
+							<label class="col-sm-1 control-label">开发环境：</label>
+							<div class="col-sm-2">
+								<select data-placeholder="--选择类别--" name="envType" id="envType" class="form-control chosen-select" tabindex="2" required>
+									<option value="">--选择类别--</option>
+								</select>
+							</div>
+							<div class="col-sm-2">
+								<button class="btn btn-success" onclick="reLoad()">查询</button>
+							</div>
+						</div>
+
+
+
+
+
+
+						<!--<div class="columns pull-right">-->
+						<!--<button class="btn btn-success" onclick="reLoad()">查询</button>-->
+						<!--</div>-->
+						<!--<div class="columns pull-right col-md-2 nopadding">-->
+						<!--<input id="searchName" type="text" class="form-control"-->
+						<!--placeholder="">-->
+						<!--</div>-->
+					</div>
+						<div class="form-group columns pull-left">
 							<button shiro:hasPermission="application:application:add" type="button" class="btn  btn-primary" onclick="add()">
 								<i class="fa fa-plus" aria-hidden="true"></i>添加
 							</button>
@@ -17,14 +53,8 @@
 								<i class="fa fa-trash" aria-hidden="true"></i>删除
 							</button>
 						</div>
-						<div class="columns pull-right">
-							<button class="btn btn-success" onclick="reLoad()">查询</button>
-						</div>
-						<div class="columns pull-right col-md-2 nopadding">
-							<input id="searchName" type="text" class="form-control"
-								placeholder="">
-						</div>
-					</div>
+
+
 					<table id="exampleTable" data-mobile-responsive="true">
 					</table>
 				</div>
