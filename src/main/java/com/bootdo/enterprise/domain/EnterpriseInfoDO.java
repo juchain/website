@@ -6,15 +6,15 @@ import java.util.Date;
 
 
 /**
- * 
- * 
+ *
+ *
  * @author allen.gu
  * @email 1992lcg@163.com
  * @date 2018-03-27 16:44:41
  */
 public class EnterpriseInfoDO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	//
 	private Long id;
 	//创建时间
@@ -32,9 +32,9 @@ public class EnterpriseInfoDO implements Serializable {
 	private String webUrl;
 	//营业执照照片url
 	private String url;
-	//法人姓名
+	//负责人姓名
 	private String name;
-	//法人手机号
+	//负责人手机号
 	private String mobile;
 	//身份证号码
 	private String certNo;
@@ -144,25 +144,25 @@ public class EnterpriseInfoDO implements Serializable {
 		return url;
 	}
 	/**
-	 * 设置：法人姓名
+	 * 设置：负责人姓名
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 	/**
-	 * 获取：法人姓名
+	 * 获取：负责人姓名
 	 */
 	public String getName() {
 		return name;
 	}
 	/**
-	 * 设置：法人手机号
+	 * 设置：负责人手机号
 	 */
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
 	/**
-	 * 获取：法人手机号
+	 * 获取：负责人手机号
 	 */
 	public String getMobile() {
 		return mobile;
