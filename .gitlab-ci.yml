@@ -1,18 +1,16 @@
 before_script:
   - docker info
+  - kubectl get no
 
-build test jar:
+deploy:
+  variables:
+    REGISTRY: 'gitlab.blockshine.net:4567'
+    LIBRARY: 'application/blockshine-website'
   script:
-    - gradle clean build -Denv=test
-    - docker build -t gitlab.blockshine.net:4567/application/blockshine-website:test .
-    - docker push gitlab.blockshine.net:4567/application/blockshine-website:test
-  only:
-    - test
-
-build prd jar:
-  script:
-    - gradle clean build -Denv=prd
-    - docker build -t gitlab.blockshine.net:4567/application/blockshine-website:latest .
-    - docker push gitlab.blockshine.net:4567/application/blockshine-website:latest
+    - gradle clean build -Denv=$CI_COMMIT_REF_NAME
+    - docker build -t $REGISTRY/$LIBRARY:$CI_COMMIT_SHA .
+    - docker push $REGISTRY/$LIBRARY:$CI_COMMIT_SHA
+    - kubectl set image deployment/website website=$REGISTRY/$LIBRARY:$CI_COMMIT_SHA -n $CI_COMMIT_REF_NAME
   only:
     - master
+    - test
