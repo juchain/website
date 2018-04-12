@@ -89,6 +89,8 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/video/open/**", "anon");
         filterChainDefinitionMap.put("/notice/open/**", "anon");
         filterChainDefinitionMap.put("/web/**/**", "anon");
+        filterChainDefinitionMap.put("/website/**", "anon");
+        filterChainDefinitionMap.put("/julian", "anon");
         filterChainDefinitionMap.put("/application/**/**", "anon");
         filterChainDefinitionMap.put("/**", "authc");
 

@@ -6,9 +6,9 @@
 
     <!-- 官网首页 -->
     <rule>
-        <from>^/$</from>
+        <from></from>
 		<!-- to: 真实的URL -->
-		<to type="forward">/blog/open/post/122</to>
+		<to type="forward"></to>
     </rule>
 
     

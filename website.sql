@@ -1299,6 +1299,19 @@ CREATE TABLE `blog_content` (
 
 -- ----------------------------
 
+-- init blog_content website
+
+-- ----------------------------
+
+DELETE FROM `blog_content`  where cid = '249';
+
+INSERT INTO `blog_content` VALUES ('249', 'website', 'website', null, null, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta charset=utf-8>\r\n    <link rel=icon href=/website/miniicon.png>\r\n    <meta name=viewport content=\"width=device-width,user-scalable=yes\">\r\n    <meta http-equiv=content-type content=\"text/html;charset=utf-8\">\r\n    <title>聚链</title>\r\n    <link href=/website/app.14597eae5d2382c6817dc82046d8d220.css rel=stylesheet>\r\n</head>\r\n<body>\r\n<div id=app></div>\r\n<script type=text/javascript src=/website/manifest.7bc35fa8538158b71e35.js></script>\r\n<script type=text/javascript src=/website/app.957dd98ff23a49a57a4b.js></script>\r\n</body>\r\n</html>', 'web', null, null, null, null, '0', null, '0', '1', 'admin', '2018-04-12 16:35:08', '2018-04-12 16:35:08', '', '2018-04-12 00:00:00', '', '0', null);
+
+
+
+
+-- ----------------------------
+
 -- Table structure for `enterprise_info`
 
 -- ----------------------------

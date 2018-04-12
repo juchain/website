@@ -95,8 +95,6 @@ public class WebController {
 	    return bContentDO.getContent();
 	}
 
-
-
 	@GetMapping("/open/post1/{cid}")
 	@ApiOperation(value = "根据id获取单个web")
 	@ResponseBody
