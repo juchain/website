@@ -82,11 +82,11 @@ function load() {
                     },
                     {
                         field : 'name',
-                        title : '法人姓名'
+                        title : '负责人姓名'
                     },
                     {
                         field : 'mobile',
-                        title : '法人手机号'
+                        title : '负责人手机号'
                     },
                     {
                         field : 'certNo',
